@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(255, 182, 219);
+    margin: 0px;
+    text-align: center;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+form {
+    display:flex;
+    flex-direction:column;
+    max-width: 40vw;
+}
+
+form button {
+    margin-top: 10px;
+}
+.container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
