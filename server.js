@@ -65,6 +65,8 @@ app.get('/listings/new', listingsCtrl.list)
 app.post('/listings', listingsCtrl.listingAdd)
 app.get('/listings/:listingId', listingsCtrl.show)
 app.delete('/listings/:userId/:listingId', listingsCtrl.deleteListing)
+app.get('/listings/:userId/:listingId/edit', listingsCtrl.edit)
+app.put('/listings/:userId/:listingId', listingsCtrl.update)
 
 
 app.listen(port, () => {

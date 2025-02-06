@@ -66,16 +66,44 @@ const deleteListing = async (req, res) => {
             res.send("You don't have permission to do that.")
         }
 
-    } catch(error) {
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+}
+const edit = async (req, res) => {
+    try {
+        const listing = await Listing.findById(req.params.listingId).populate('owner')
+        console.log(listing)
+        res.render('listings/edit.ejs', {
+            title: `Edit ${listing.streetAddress}`,
+            listing
+        })
+    } catch {
         console.log(error)
         res.redirect('/')
     }
 }
 
+const update = async (req, res) => {
+    try {
+        const listing = await Listing.findByIdAndUpdate(
+        req.params.listingId,
+        req.body,
+        { new: true}
+        )
+        res.redirect(`/listings/${listing._id}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+}
 module.exports = {
     index,
     list,
     listingAdd,
     show,
     deleteListing,
+    edit,
+    update,
 }

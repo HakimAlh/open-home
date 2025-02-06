@@ -1,0 +1,20 @@
+<%- include('../partials/head') %>
+
+    <div class="container">
+        <h1>Editing <%= listing.streetAddress %></h1>
+        <form action="/listings/<%= user._id %>/<%= listing._id %>?_method=PUT" method="POST">
+            <label for="">Street Address: </label>
+            <input type="text" name="streetAddress" value="<%= listing.streetAddress %>">
+            <label for="">City: </label>
+            <input type="text" name="city" value="<%= listing.city %>">
+            <label for="">Price: </label>
+            <input type="number" name="price" value="<%= listing.price %>">
+            <label for="">Size: </label>
+            <input type="text" name="size" value="<%= listing.size %>">
+            <label for="">Image: </label>
+            <input type="text" name="imgUrl" value="<%=listing.imgUrl %>">
+            <button type="submit" class="btn btn-primary">Edit Listing</button>
+        </form>
+    </div>
+
+<%- include('../partials/footer') %>
