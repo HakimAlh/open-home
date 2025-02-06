@@ -74,11 +74,16 @@ const deleteListing = async (req, res) => {
 const edit = async (req, res) => {
     try {
         const listing = await Listing.findById(req.params.listingId).populate('owner')
-        console.log(listing)
+         if(listing.owner.equals(req.params.userId)) {
+
+         
         res.render('listings/edit.ejs', {
             title: `Edit ${listing.streetAddress}`,
             listing
         })
+     } else {
+        res.send("You don't have permission to do that.")
+     }
     } catch {
         console.log(error)
         res.redirect('/')
